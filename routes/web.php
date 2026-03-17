@@ -25,9 +25,9 @@ Route::get('/mahasiswa/{nama}/{nim}', function ($nama, $nim) {
 });
 
 // Route dengan parameter opsional
-Route::get('/dosen/{nama?}/{nip?}', function ($nama = "me", $nip = "000") {
+/*Route::get('/dosen/{nama?}/{nip?}', function ($nama = "me", $nip = "000") {
     return "Selamat Datang $nama dengan NIP $nip";
-});
+});*/
 
 // Route dengan redirect
 Route::redirect('/home', '/');
@@ -47,10 +47,40 @@ Route::redirect('/home', '/');
     return view('akademik.mahasiswa')->with($arrmhs);
 });*/
 
-Route::get('/mahasiswa', function () {
+/*Route::get('/mahasiswa', function () {
     $nama = 'Lynx';
     $nim = '123456789';
-    $total_nilai = 80;
+    $total_nilai = 100;
 
     return view('akademik.nilai_mahasiswa', compact('nama', 'nim', 'total_nilai'));
+});*/
+
+Route::get('/perulangan', function () {
+    $nama = 'Lynx';
+    $nim = '123456789';
+    $total_nilai = [80, 70, 20, 60, 45];
+    return view('akademik.perulangan', compact('nama', 'nim', 'total_nilai'));
 });
+
+Route::get('/mahasiswa', function () {
+    $arrMhs = ['Lynx', 'Furina', 'Chisa', 'Dino', 'Endmin'];
+    return view('akademik.mahasiswa', ['mhs' => $arrMhs]);
+});
+
+Route::get('/dosen', function () {
+    $arrDosen = ['Pak Andi', 'Bu Siti', 'Pak Budi', 'Bu Dewi', 'Pak Eko'];
+    return view('akademik.dosen', ['dosen' => $arrDosen]);
+});
+
+/*Route::get('/prodi', function () {
+    return view('akademik.prodi');
+}); */
+
+/*Route::get('/pnp/jurusan/ti/prodi', function () {
+    return view('akademik.prodi');
+})->name('prodi'); */
+
+Route::get('/pnp/{jurusan}/{prodi}', function ($jurusan, $prodi) {
+    $data = [$jurusan, $prodi];
+    return view('akademik.prodi')->with('data', $data);
+})->name('prodi');

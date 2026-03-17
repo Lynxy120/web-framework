@@ -1,28 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
+@section('title')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Mahasiswa</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
-    <h1>Daftar Mahasiswa</h1>
+@section('content')
+    <h1>Daftar Mahasiswa Jurusan TI</h1>
     <ol>
-        <li><?= $mhs1 ?></li>
-        <li>Furina</li>
-        <li><?= $mhs2 ?></li>
-        <li>Silver Wolf</li>
-        <li>Laevatein</li>
-        <li><?= $mhs3 ?></li>
-        <li>Serval</li>
+        @foreach ($mhs as $namaMhs)
+            <li>{{ $namaMhs }}</li>
+        @endforeach
     </ol>
-    <div>
-        <p>Padang &copy; <?= date('Y'); ?></p>
-        <img src="images/wonhee.jpg" alt="Wonhee" width="500">
-    </div>
-</body>
 
-</html>
+@endsection
