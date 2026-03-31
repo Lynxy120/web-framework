@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\DosenController;
+use App\Http\Controllers\Auth\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -62,10 +64,11 @@ Route::get('/perulangan', function () {
     return view('akademik.perulangan', compact('nama', 'nim', 'total_nilai'));
 });
 
+/*
 Route::get('/mahasiswa', function () {
     $arrMhs = ['Lynx', 'Furina', 'Chisa', 'Dino', 'Endmin'];
     return view('akademik.mahasiswa', ['mhs' => $arrMhs]);
-});
+}); */
 
 Route::get('/dosen', function () {
     $arrDosen = ['Pak Andi', 'Bu Siti', 'Pak Budi', 'Bu Dewi', 'Pak Eko'];
@@ -84,3 +87,6 @@ Route::get('/pnp/{jurusan}/{prodi}', function ($jurusan, $prodi) {
     $data = [$jurusan, $prodi];
     return view('akademik.prodi')->with('data', $data);
 })->name('prodi');
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/dosen', [DosenController::class, 'index']);
