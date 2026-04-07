@@ -90,3 +90,4 @@ Route::get('/pnp/{jurusan}/{prodi}', function ($jurusan, $prodi) {
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/dosen', [DosenController::class, 'index']);
+Route::get('/insert-sql', [MahasiswaController::class, 'insertSql']);
