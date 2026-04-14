@@ -10,18 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('dosens', function (Blueprint $table) {
             $table->id();
-            $table->char('nim', 10)->unique();
+            $table->char('nik', 18);
             $table->string('nama');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
+            $table->string('email')->unique();
+            $table->char('no_telp', 15);
             $table->string('prodi');
-            $table->decimal('ipk', 3, 2);
-            $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('alamat');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('dosens');
     }
 };
